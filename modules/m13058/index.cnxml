@@ -1,0 +1,15 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Introduction - Digital Filters (INCT)</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>7ef581d5-3a54-43eb-95dc-fe718f7de735</md:uuid>
+</metadata>
+
+<content>
+  <para id="para2">　音声や画像などをパソコンなどの計算機上で扱う場合、サンプリングされた信号として取り扱うことになる。このような形態で信号を取り扱う手法は、ディジタル信号処理技術として知られている。現在では、情報通信の分野はもちろん、広く工学分野において、ディジタル信号処理に関する理解が欠かせなくなってきている。
+
+</para><para id="element-354">　そこで、本テーマではディジタル信号処理技術の基礎の一つである
+ディジタルフィルタを理解することを目的とする。具体的には、
+インパルス応答からディジタルフィルタの特性を計算する方法や、
+信号のフィルタリング処理(畳み込み演算)手順を理解し、プログラム
+の実装を行う。</para>
+</content>
+</document>

@@ -1,0 +1,712 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Overview of Digital Filters (INCT)</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>c239407e-c243-4c71-a396-e25a3aa279a8</md:uuid>
+</metadata>
+
+<content>
+<section id="secyyama1000">
+  <title>線形シフト不変システムとインパルス応答</title> 
+  <para id="para2">　ディジタル信号処理を実行する処理ブロックのモデルとして、図1に示すブロック図を考える。
+</para><figure id="element-158"><media id="idm160976" alt=""><image src="../../media/figure1.jpg" mime-type="image/jpeg"/></media>
+<caption>システムの入出力関係</caption></figure><para id="element-294"> 　図1で、
+<m:math>
+		<m:mrow>
+			<m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>n</m:mi><m:mo stretchy="false">)</m:mo>
+		</m:mrow>
+	</m:math>
+および<m:math>
+		<m:mrow>
+			<m:mi>y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>n</m:mi><m:mo stretchy="false">)</m:mo>
+		</m:mrow>
+	</m:math>
+をそれぞれ入力信号および出力信号とする。
+ここで、<m:math>
+		<m:mrow>
+			<m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>n</m:mi><m:mo stretchy="false">)</m:mo>
+		</m:mrow>
+	</m:math>から
+<m:math>
+		<m:mrow>
+			<m:mi>y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>n</m:mi><m:mo stretchy="false">)</m:mo>
+		</m:mrow>
+	</m:math>
+を生じる処理ブロックを、システムと呼ぶことにする。
+システムが線形性、シフト不変性[1]などの条件を満たすとき、このシステムを
+線形シフト不変システムという。
+また、システムを実時間処理で実現するには、
+因果性[1]が要求される。本テーマで扱うシステムはすべて因果性を満たす
+ものとする。</para><para id="element-41">　線形シフト不変システムにディジタル単位インパルス
+<m:math>
+ <m:mrow>
+  <m:mi>δ</m:mi><m:mo stretchy="false">(</m:mo><m:mi>n</m:mi><m:mo stretchy="false">)</m:mo>
+ </m:mrow>
+</m:math>
+
+</para>
+<equation id="digi_impulse">
+<m:math display="block">
+ <m:mrow>
+  <m:mi>δ</m:mi><m:mo stretchy="false">(</m:mo><m:mi>n</m:mi><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mrow><m:mo>{</m:mo> <m:mrow>
+   <m:mtable>
+    <m:mtr>
+     <m:mtd>
+      <m:mn>1</m:mn>
+     </m:mtd>
+    </m:mtr>
+    <m:mtr>
+     <m:mtd>
+      <m:mrow>
+       <m:mn>0</m:mn><m:mtext>​</m:mtext><m:mtext>​</m:mtext><m:mtext>​</m:mtext><m:mtext>​</m:mtext>
+      </m:mrow>
+     </m:mtd>
+    </m:mtr>
+    
+   </m:mtable>
+  </m:mrow> </m:mrow><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mtable>
+   <m:mtr>
+    <m:mtd>
+     <m:mrow>
+      <m:mo stretchy="false">(</m:mo><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>0</m:mn><m:mo stretchy="false">)</m:mo>
+     </m:mrow>
+    </m:mtd>
+   </m:mtr>
+   <m:mtr>
+    <m:mtd>
+     <m:mrow>
+      <m:mo stretchy="false">(</m:mo><m:mi>n</m:mi><m:mo>≠</m:mo><m:mn>0</m:mn><m:mo stretchy="false">)</m:mo>
+     </m:mrow>
+    </m:mtd>
+   </m:mtr>
+   
+  </m:mtable>
+ </m:mrow>
+</m:math>
+</equation>
+<para id="element-997">を入力したときの出力
+<m:math>
+ <m:mrow>
+  <m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>n</m:mi><m:mo stretchy="false">)</m:mo>
+ </m:mrow>
+</m:math>
+を、インパルス応答と定義する。
+インパルス応答は、システムの性質を示す重要な値である。</para>
+</section>
+
+<section id="secyyama1100">
+  <title>畳み込み演算とディジタルフィルタ</title>
+  <para id="para3">あるシステムが線形性とシフト不変性を満たす場合、そのシステムのインパル
+ス応答
+<m:math>
+ <m:mrow>
+  <m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>n</m:mi><m:mo stretchy="false">)</m:mo>
+ </m:mrow>
+</m:math>
+が与えられれば、任意の入力
+<m:math>
+ <m:mrow>
+  <m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>n</m:mi><m:mo stretchy="false">)</m:mo>
+ </m:mrow>
+</m:math>
+に対する出力
+<m:math>
+ <m:mrow>
+  <m:mi>y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>n</m:mi><m:mo stretchy="false">)</m:mo>
+ </m:mrow>
+</m:math>
+は、
+式(2)により計算することができる。
+  </para><equation id="element-833">
+<!-- MathType@MTEF@5@5@+= -->
+<!-- feaafaart1ev1aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLn -->
+<!-- hiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYbItLDharqqtubsr -->
+<!-- 4rNCHbWexLMBbXgBd9gzLbvyNv2CaeHbcYMGYbIL+kzQaibaieYlNi -->
+<!-- =xH8yiVC0xbbL8F4rqqrFfpeea0xe9Lq=Jc9vqaqpepm0xbbG8FasP -->
+<!-- YRqj0=yi0dXdbba9pGe9xq=JbbG8A8frFve9Fve9Ff0dmeaabaqaci -->
+<!-- GacaGaaeqabaWaaeaaeaqbaOabaeqabaGaamyEaiaacIcacaWGUbGa -->
+<!-- aiykaiabg2da9maaqahabaGaamiEaiaacIcacaWGRbGaaiykaiaadI -->
+<!-- gacaGGOaGaamOBaiabgkHiTiaadUgacaGGPaaaleaacaWGRbGaeyyp -->
+<!-- a0JaeyOeI0IaeyOhIukabaGaeyOhIukaniabggHiLdaakeaacaaMc8 -->
+<!-- UaaGPaVlaaykW7caaMc8UaaGPaVlaaykW7caaMc8Uaeyypa0ZaaabC -->
+<!-- aeaacaWGObGaaiikaiaadUgacaGGPaGaamiEaiaacIcacaWGUbGaey -->
+<!-- OeI0Iaam4AaiaacMcaaSqaaiaadUgacqGH9aqpcqGHsislcqGHEisP -->
+<!-- aeaacqGHEisPa0GaeyyeIuoaaaaa@714C@ -->
+<m:math display="block">
+ <m:mtable columnalign="left">
+  <m:mtr>
+   <m:mtd>
+    <m:mi>y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>n</m:mi><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:munderover>
+     <m:mo>∑</m:mo>
+     <m:mrow>
+      <m:mi>k</m:mi><m:mo>=</m:mo><m:mo>−</m:mo><m:mi>∞</m:mi>
+     </m:mrow>
+     <m:mi>∞</m:mi>
+    </m:munderover>
+    <m:mrow>
+     <m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>k</m:mi><m:mo stretchy="false">)</m:mo><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>n</m:mi><m:mo>−</m:mo><m:mi>k</m:mi><m:mo stretchy="false">)</m:mo>
+    </m:mrow>
+    
+   </m:mtd>
+  </m:mtr>
+  <m:mtr>
+   <m:mtd>
+    <m:mtext> </m:mtext><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mo>=</m:mo><m:munderover>
+     <m:mo>∑</m:mo>
+     <m:mrow>
+      <m:mi>k</m:mi><m:mo>=</m:mo><m:mo>−</m:mo><m:mi>∞</m:mi>
+     </m:mrow>
+     <m:mi>∞</m:mi>
+    </m:munderover>
+    <m:mrow>
+     <m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>k</m:mi><m:mo stretchy="false">)</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>n</m:mi><m:mo>−</m:mo><m:mi>k</m:mi><m:mo stretchy="false">)</m:mo>
+    </m:mrow>
+    
+   </m:mtd>
+  </m:mtr>
+ </m:mtable>
+ 
+</m:math></equation><para id="element-693">　さらに、ある入力信号に対して畳み込み演算を実行することにより、入力信号
+からある特定の周波数成分だけを抜き出すなどのフィルタ効果があることが知
+られている。加えてこのフィルタ効果は、インパルス応答を変化させることに
+より様々に変化させることができる。
+
+このことから、畳み込み演算を実行するシステムは、ディジタルフィルタ
+ともよばれている。インパルス応答が有限時間だけ持続するシステム
+をFIR(Finite Impulse Response)システム(またはFIRフィルタ)、
+無限時間持続するフィルタのことをIIR(Infinite Impulse Response)システム
+(またはIIRフィルタ)と分類している。本テーマでは、FIRフィルタ
+を扱うこととする。</para>
+</section>
+
+<section id="secyyama1200">
+  <title>インパルス応答と周波数特性</title>
+  <para id="para4">　以上のようなフィルタ効果を与えるシステムの特性を、そのシステムの周波数
+特性として表現することができる。インパルス応答
+<m:math>
+		<m:mrow>
+			<m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>n</m:mi><m:mo stretchy="false">)</m:mo>
+		</m:mrow>
+	</m:math>
+を有するシステム
+の周波数特性
+<m:math>
+		<m:mrow>
+			<m:mi>H</m:mi><m:mo stretchy="false">(</m:mo><m:msup>
+				<m:mi>e</m:mi>
+				<m:mrow>
+					<m:mi>j</m:mi><m:mi>ω</m:mi>
+				</m:mrow>
+			</m:msup>
+			<m:mo stretchy="false">)</m:mo>
+		</m:mrow>
+	</m:math>
+は、
+<m:math>
+		<m:mi>ω</m:mi>
+	</m:math>
+を正規化角周波数として、
+次式で定義される。</para><equation id="element-885">
+<!-- MathType@MTEF@5@5@+= -->
+<!-- feaafaart1ev1aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLn -->
+<!-- hiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYbItLDharqqtubsr -->
+<!-- 4rNCHbWexLMBbXgBd9gzLbvyNv2CaeHbcYMGYbIL+kzQaibaieYlNi -->
+<!-- =xH8yiVC0xbbL8F4rqqrFfpeea0xe9Lq=Jc9vqaqpepm0xbbG8FasP -->
+<!-- YRqj0=yi0dXdbba9pGe9xq=JbbG8A8frFve9Fve9Ff0dmeaabaqaci -->
+<!-- GacaGaaeqabaWaaeaaeaqbaOqaaiaadIeacaGGOaGaamyzamaaCaaa -->
+<!-- leqabaGaamOAaiabeM8a3baakiaacMcacqGH9aqpdaaeWbqaaiaadI -->
+<!-- gacaGGOaGaamOBaiaacMcacaWGLbWaaWbaaSqabeaacqGHsislcaWG -->
+<!-- QbGaeqyYdCNaamOBaaaaaeaacaWGUbGaeyypa0JaeyOeI0IaeyOhIu -->
+<!-- kabaGaeyOhIukaniabggHiLdaaaa@5846@ -->
+<m:math display="block">
+ <m:mi>H</m:mi><m:mo stretchy="false">(</m:mo><m:msup>
+  <m:mi>e</m:mi>
+  <m:mrow>
+   <m:mi>j</m:mi><m:mi>ω</m:mi>
+  </m:mrow>
+ </m:msup>
+ <m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:munderover>
+  <m:mo>∑</m:mo>
+  <m:mrow>
+   <m:mi>n</m:mi><m:mo>=</m:mo><m:mo>−</m:mo><m:mi>∞</m:mi>
+  </m:mrow>
+  <m:mi>∞</m:mi>
+ </m:munderover>
+ <m:mrow>
+  <m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>n</m:mi><m:mo stretchy="false">)</m:mo><m:msup>
+   <m:mi>e</m:mi>
+   <m:mrow>
+    <m:mo>−</m:mo><m:mi>j</m:mi><m:mi>ω</m:mi><m:mi>n</m:mi>
+   </m:mrow>
+  </m:msup>
+  
+ </m:mrow>
+ 
+</m:math>
+
+</equation><para id="element-322">　システムがFIRフィルタの場合、インパルス応答
+<m:math>
+ <m:mrow>
+  <m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>n</m:mi><m:mo stretchy="false">)</m:mo>
+ </m:mrow>
+</m:math>
+は有限時間しか持
+続しない。また、因果性を満たすシステムの場合、因果性の定義より、
+<m:math>
+ <m:mrow>
+  <m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>n</m:mi><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mn>0</m:mn><m:mo stretchy="false">(</m:mo><m:mi>n</m:mi><m:mo>&lt;</m:mo><m:mn>0</m:mn><m:mo stretchy="false">)</m:mo>
+ </m:mrow>
+</m:math>
+であるので、因果性を満足しインパルス応答長が
+<m:math>
+ <m:mi>N</m:mi>
+</m:math>
+で
+あるFIRシステムの周波数特性は次式となる。</para><equation id="element-667"><!-- MathType@MTEF@5@5@+= -->
+<!-- feaafaart1ev1aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLn -->
+<!-- hiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYbItLDharqqtubsr -->
+<!-- 4rNCHbWexLMBbXgBd9gzLbvyNv2CaeHbcYMGYbIL+kzQaibaieYlNi -->
+<!-- =xH8yiVC0xbbL8F4rqqrFfpeea0xe9Lq=Jc9vqaqpepm0xbbG8FasP -->
+<!-- YRqj0=yi0dXdbba9pGe9xq=JbbG8A8frFve9Fve9Ff0dmeaabaqaci -->
+<!-- GacaGaaeqabaWaaeaaeaqbaOqaaiaadIeacaGGOaGaamyzamaaCaaa -->
+<!-- leqabaGaamOAaiabeM8a3baakiaacMcacqGH9aqpdaaeWbqaaiaadI -->
+<!-- gacaGGOaGaamOBaiaacMcacaWGLbWaaWbaaSqabeaacqGHsislcaWG -->
+<!-- QbGaeqyYdCNaamOBaaaaaeaacaWGUbGaeyypa0JaaGimaaqaaiaad6 -->
+<!-- eacqGHsislcaaIXaaaniabggHiLdaaaa@57AC@ -->
+<m:math display="block">
+ <m:mi>H</m:mi><m:mo stretchy="false">(</m:mo><m:msup>
+  <m:mi>e</m:mi>
+  <m:mrow>
+   <m:mi>j</m:mi><m:mi>ω</m:mi>
+  </m:mrow>
+ </m:msup>
+ <m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:munderover>
+  <m:mo>∑</m:mo>
+  <m:mrow>
+   <m:mi>n</m:mi><m:mo>=</m:mo><m:mn>0</m:mn>
+  </m:mrow>
+  <m:mrow>
+   <m:mi>N</m:mi><m:mo>−</m:mo><m:mn>1</m:mn>
+  </m:mrow>
+ </m:munderover>
+ <m:mrow>
+  <m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>n</m:mi><m:mo stretchy="false">)</m:mo><m:msup>
+   <m:mi>e</m:mi>
+   <m:mrow>
+    <m:mo>−</m:mo><m:mi>j</m:mi><m:mi>ω</m:mi><m:mi>n</m:mi>
+   </m:mrow>
+  </m:msup>
+  
+ </m:mrow>
+ 
+</m:math>
+
+</equation><para id="element-520"><m:math>
+ <m:mi>N</m:mi>
+</m:math>
+のことをフィルタ長ということもある。</para>
+</section>
+
+<section id="secyyama1300">
+  <title>周波数特性の計算</title>
+  <para id="para5">　周波数特性には、その大きさを表す振幅特性と、入出力信号間の位相の変化を
+表す位相特性とがある。また、位相特性を別の形で表現した特性として、
+群遅延特性がある。
+  </para><para id="element-814">(4)式より、振幅特性
+<m:math>
+  <m:mi>H</m:mi><m:mo stretchy="false">(</m:mo><m:msup>
+   <m:mi>e</m:mi>
+   <m:mrow>
+    <m:mi>j</m:mi><m:mi>ω</m:mi>
+   </m:mrow>
+  </m:msup>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+は、以下のように実部と虚部に分けて表すことができる。</para><equation id="element-606"><m:math display="block">
+  <m:mi>H</m:mi><m:mo stretchy="false">(</m:mo><m:msup>
+   <m:mi>e</m:mi>
+   <m:mrow>
+    <m:mi>j</m:mi><m:mi>ω</m:mi>
+   </m:mrow>
+  </m:msup>
+  <m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mstyle displaystyle="true">
+   <m:munderover>
+    <m:mo>∑</m:mo>
+    <m:mrow>
+     <m:mi>n</m:mi><m:mo>=</m:mo><m:mn>0</m:mn>
+    </m:mrow>
+    <m:mrow>
+     <m:mi>N</m:mi><m:mo>−</m:mo><m:mn>1</m:mn>
+    </m:mrow>
+   </m:munderover>
+   <m:mrow>
+    <m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>n</m:mi><m:mo stretchy="false">)</m:mo><m:mi>cos</m:mi><m:mo>⁡</m:mo><m:mi>ω</m:mi><m:mi>n</m:mi><m:mo>+</m:mo><m:mi>j</m:mi><m:mrow><m:mo>{</m:mo> <m:mrow>
+     <m:mo>−</m:mo><m:mstyle displaystyle="true">
+      <m:munderover>
+       <m:mo>∑</m:mo>
+       <m:mrow>
+        <m:mi>n</m:mi><m:mo>=</m:mo><m:mn>1</m:mn>
+       </m:mrow>
+       <m:mrow>
+        <m:mi>N</m:mi><m:mo>−</m:mo><m:mn>1</m:mn>
+       </m:mrow>
+      </m:munderover>
+      <m:mrow>
+       <m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>n</m:mi><m:mo stretchy="false">)</m:mo><m:mi>sin</m:mi><m:mo>⁡</m:mo><m:mi>ω</m:mi><m:mi>n</m:mi>
+      </m:mrow>
+     </m:mstyle>
+    </m:mrow> <m:mo>}</m:mo></m:mrow>
+   </m:mrow>
+  </m:mstyle>
+</m:math>
+</equation><para id="element-432">ここで、右辺第一項は実部、右辺第二項は虚部である。よって振幅特性
+<m:math>
+ <m:mrow>
+    <m:mi>H</m:mi><m:mo stretchy="false">(</m:mo><m:msup>
+    <m:mi>e</m:mi>
+    <m:mrow>
+     <m:mi>j</m:mi><m:mi>ω</m:mi>
+    </m:mrow>
+   </m:msup>
+   <m:mo stretchy="false">)</m:mo>
+ </m:mrow>
+</m:math>
+の絶対値は、(5)式の絶対値をとって以下のように計算できる。</para><equation id="element-701">
+<!-- MathType@MTEF@5@5@+= -->
+<!-- feaafaart1ev1aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLn -->
+<!-- hiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYbItLDharqqtubsr -->
+<!-- 4rNCHbWexLMBbXgBd9gzLbvyNv2CaeHbcYMGYbIL+kzQaibaieYlNi -->
+<!-- =xH8yiVC0xbbL8F4rqqrFfpeea0xe9Lq=Jc9vqaqpepm0xbbG8FasP -->
+<!-- YRqj0=yi0dXdbba9pGe9xq=JbbG8A8frFve9Fve9Ff0dmeaabaqaci -->
+<!-- GacaGaaeqabaWaaeaaeaqbaOqaamaaemaabaGaamisaiaacIcacaWG -->
+<!-- LbWaaWbaaSqabeaacaWGQbGaeqyYdChaaOGaaiykaaGaay5bSlaawI -->
+<!-- a7aiabg2da9maakaaabaGaamOuamaaDaaaleaacaWGLbaabaGaaGOm -->
+<!-- aaaakiabgUcaRiaadMeadaqhaaWcbaGaamyBaaqaaiaaikdaaaaabe -->
+<!-- aaaaa@50CC@ -->
+<m:math display="block">
+ <m:mrow><m:mo>|</m:mo> <m:mrow>
+  <m:mi>H</m:mi><m:mo stretchy="false">(</m:mo><m:msup>
+   <m:mi>e</m:mi>
+   <m:mrow>
+    <m:mi>j</m:mi><m:mi>ω</m:mi>
+   </m:mrow>
+  </m:msup>
+  <m:mo stretchy="false">)</m:mo>
+ </m:mrow> <m:mo>|</m:mo></m:mrow><m:mo>=</m:mo><m:msqrt>
+  <m:mrow>
+   <m:msubsup>
+    <m:mi>R</m:mi>
+    <m:mi>e</m:mi>
+    <m:mn>2</m:mn>
+   </m:msubsup>
+   <m:mo>+</m:mo><m:msubsup>
+    <m:mi>I</m:mi>
+    <m:mi>m</m:mi>
+    <m:mn>2</m:mn>
+   </m:msubsup>
+   
+  </m:mrow>
+ </m:msqrt>
+ 
+</m:math>
+
+</equation><para id="element-37">式(6)で
+<m:math>
+  <m:msub>
+   <m:mi>R</m:mi>
+   <m:mi>e</m:mi>
+  </m:msub>
+</m:math>
+および
+<m:math>
+  <m:msub>
+   <m:mi>I</m:mi>
+   <m:mi>m</m:mi>
+  </m:msub>
+</m:math>
+は、それぞれ(5)式における実部と虚部を表すものとする。振幅特性の大きさは、しばしば[dB]で表示される。この場合の振幅(ampitude) [dB]は、常用対数をとって次式で表される。</para><equation id="element-772"><m:math display="block">
+   <m:mn>20</m:mn><m:msub>
+   <m:mi>log</m:mi>
+   <m:mrow>
+    <m:mn>10</m:mn>
+   </m:mrow>
+  </m:msub>
+  <m:mrow><m:mo>|</m:mo> <m:mrow>
+   <m:mi>H</m:mi><m:mo stretchy="false">(</m:mo><m:msup>
+    <m:mi>e</m:mi>
+    <m:mrow>
+     <m:mi>j</m:mi><m:mi>ω</m:mi>
+    </m:mrow>
+   </m:msup>
+   <m:mo stretchy="false">)</m:mo>
+  </m:mrow> <m:mo>|</m:mo></m:mrow>
+ </m:math>
+</equation><para id="element-64">(7)式で、正規化角周波数<m:math>
+ <m:mi>ω</m:mi>
+</m:math>
+を細かく変化させて
+<m:math>
+ <m:mi>ω</m:mi>
+</m:math>
+を横軸、振幅特性を縦軸としてグラフに示せば、振幅特性の
+グラフを得ることができる。また、周波数を正規化周波数
+<m:math>
+ <m:mrow>
+  <m:mi>f</m:mi><m:mo>=</m:mo><m:mfrac>
+   <m:mi>ω</m:mi>
+   <m:mrow>
+    <m:mn>2</m:mn><m:mi>π</m:mi>
+   </m:mrow>
+  </m:mfrac>
+  
+ </m:mrow>
+</m:math>
+
+で表現することも多い。正規化周波数
+<m:math>
+ <m:mi>f</m:mi>
+</m:math>
+は、周波数
+<m:math>
+ <m:mi>F</m:mi>
+</m:math>
+[Hz]をサンプリング周波数
+<m:math>
+ <m:mrow>
+  <m:msub>
+   <m:mi>F</m:mi>
+   <m:mi>s</m:mi>
+  </m:msub>
+  
+ </m:mrow>
+</m:math>
+[Hz]で割った値である。</para><para id="element-774">位相特性
+<m:math>
+ <m:mrow>
+  <m:mi>θ</m:mi><m:mo stretchy="false">(</m:mo><m:mi>ω</m:mi><m:mo stretchy="false">)</m:mo>
+ </m:mrow>
+</m:math>
+は、振幅特性
+<m:math>
+ <m:mi>H</m:mi><m:mo stretchy="false">(</m:mo><m:msup>
+   <m:mi>e</m:mi>
+   <m:mrow>
+    <m:mi>j</m:mi><m:mi>ω</m:mi>
+   </m:mrow>
+  </m:msup>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+を極座標表示したときの偏角である。
+数値計算により
+<m:math>
+ <m:mrow>
+  <m:mi>θ</m:mi><m:mo stretchy="false">(</m:mo><m:mi>ω</m:mi><m:mo stretchy="false">)</m:mo>
+ </m:mrow>
+</m:math>
+の値を求める場合には、次式を用いることができる（ただし、その処理系での逆正接関数 －たとえば atan( )関数－ の主値の範囲について理解しておくことが必要であろう）。</para><equation id="element-846"><!-- MathType@MTEF@5@5@+= -->
+<!-- feaafaart1ev1aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLn -->
+<!-- hiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYbItLDharqqtubsr -->
+<!-- 4rNCHbWexLMBbXgBd9gzLbvyNv2CaeHbcYMGYbIL+kzQaibaieYlNi -->
+<!-- =xH8yiVC0xbbL8F4rqqrFfpeea0xe9Lq=Jc9vqaqpepm0xbbG8FasP -->
+<!-- YRqj0=yi0dXdbba9pGe9xq=JbbG8A8frFve9Fve9Ff0dmeaabaqaci -->
+<!-- GacaGaaeqabaWaaeaaeaqbaOqaaiabeI7aXjaacIcacqaHjpWDcaGG -->
+<!-- PaGaeyypa0JaciiDaiaacggacaGGUbWaaWbaaSqabeaacqGHsislca -->
+<!-- aIXaaaaOWaaSaaaeaacaWGsbWaaSbaaSqaaiaadwgaaeqaaaGcbaGa -->
+<!-- amysamaaBaaaleaacaWGTbaabeaaaaGccaaMc8UaaGPaVlaaykW7ca -->
+<!-- aMc8UaaGPaVlaaykW7caaMc8Uaai4waiaadkhacaWGHbGaamizaiaa -->
+<!-- c2faaaa@5E34@ -->
+<m:math display="block">
+ <m:mi>θ</m:mi><m:mo stretchy="false">(</m:mo><m:mi>ω</m:mi><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:msup>
+  <m:mo>tan</m:mo>
+  <m:mrow>
+   <m:mo>−</m:mo><m:mn>1</m:mn>
+  </m:mrow>
+ </m:msup>
+ <m:mfrac>
+  <m:mrow>
+   <m:msub>
+    <m:mi>I</m:mi>
+    <m:mi>m</m:mi>
+   </m:msub>
+   
+  </m:mrow>
+  <m:mrow>
+   <m:msub>
+    <m:mi>R</m:mi>
+    <m:mi>e</m:mi>
+   </m:msub>
+   
+  </m:mrow>
+ </m:mfrac>
+ <m:mtext> </m:mtext><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mo stretchy="false">[</m:mo><m:mi>r</m:mi><m:mi>a</m:mi><m:mi>d</m:mi><m:mo stretchy="false">]</m:mo>
+</m:math>
+
+</equation><para id="element-577">さらに、群遅延特性
+<m:math>
+ <m:mi>τ</m:mi>
+</m:math>
+の定義は、位相特性の傾きとして次式で与えられる。</para><equation id="element-452"><!-- MathType@MTEF@5@5@+= -->
+<!-- feaafaart1ev1aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLn -->
+<!-- hiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYbItLDharqqtubsr -->
+<!-- 4rNCHbWexLMBbXgBd9gzLbvyNv2CaeHbcYMGYbIL+kzQaibaieYlNi -->
+<!-- =xH8yiVC0xbbL8F4rqqrFfpeea0xe9Lq=Jc9vqaqpepm0xbbG8FasP -->
+<!-- YRqj0=yi0dXdbba9pGe9xq=JbbG8A8frFve9Fve9Ff0dmeaabaqaci -->
+<!-- GacaGaaeqabaWaaeaaeaqbaOqaaiabes8a0jabg2da9iabgkHiTmaa -->
+<!-- laaabaGaamizaiabeI7aXjaacIcacqaHjpWDcaGGPaaabaGaamizai -->
+<!-- abeM8a3baacaaMc8UaaGPaVlaaykW7caaMc8UaaGPaVlaaykW7caaM -->
+<!-- c8Uaai4waiaadofacaWGHbGaamyBaiaadchacaWGSbGaamyzaiaac2 -->
+<!-- faaaa@5EA2@ -->
+<m:math display="block">
+ <m:mi>τ</m:mi><m:mo>=</m:mo><m:mo>−</m:mo><m:mfrac>
+  <m:mrow>
+   <m:mi>d</m:mi><m:mi>θ</m:mi><m:mo stretchy="false">(</m:mo><m:mi>ω</m:mi><m:mo stretchy="false">)</m:mo>
+  </m:mrow>
+  <m:mrow>
+   <m:mi>d</m:mi><m:mi>ω</m:mi>
+  </m:mrow>
+ </m:mfrac>
+ <m:mtext> </m:mtext><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mo stretchy="false">[</m:mo><m:mi>S</m:mi><m:mi>a</m:mi><m:mi>m</m:mi><m:mi>p</m:mi><m:mi>l</m:mi><m:mi>e</m:mi><m:mo stretchy="false">]</m:mo>
+</m:math>
+
+</equation><para id="element-528">以上をまとめると、インパルス応答
+<m:math>
+ <m:mrow>
+  <m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>n</m:mi><m:mo stretchy="false">)</m:mo>
+ </m:mrow>
+</m:math>
+の値が既知ならば、周波数特性(振幅、
+位相、群遅延特性)を計算できることになる。あるインパルス応答について、実際に周波数特性を計算した例
+を図2に示す。図2(a)がインパルス応答で、図2(b)から(d)がそれぞれ振幅、
+位相、群遅延特性である。</para><figure id="element-300"><media id="idp118208" alt=""><image src="../../media/figure2.jpg" mime-type="image/jpeg"/></media>
+<caption>周波数特性の計算例</caption></figure>
+</section>
+
+<section id="secyyama1400">
+  <title>伝達関数についての補足</title>
+  <para id="para6">式(2)をz変換すると、次式となる。</para><equation id="element-891"><!-- MathType@MTEF@5@5@+= -->
+<!-- feaafaart1ev1aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLn -->
+<!-- hiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYbItLDharqqtubsr -->
+<!-- 4rNCHbWexLMBbXgBd9gzLbvyNv2CaeHbcYMGYbIL+kzQaibaieYlNi -->
+<!-- =xH8yiVC0xbbL8F4rqqrFfpeea0xe9Lq=Jc9vqaqpepm0xbbG8FasP -->
+<!-- YRqj0=yi0dXdbba9pGe9xq=JbbG8A8frFve9Fve9Ff0dmeaabaqaci -->
+<!-- GacaGaaeqabaWaaeaaeaqbaOqaaiaadMfacaGGOaGaamOEaiaacMca -->
+<!-- cqGH9aqpcaWGibGaaiikaiaadQhacaGGPaGaamiwaiaacIcacaWG6b -->
+<!-- Gaaiykaaaa@4AE8@ -->
+<m:math display="block">
+ <m:mi>Y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mi>H</m:mi><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo><m:mi>X</m:mi><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo>
+</m:math>
+</equation><para id="element-186">　上式の
+<m:math>
+ <m:mrow>
+  <m:mi>H</m:mi><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo>
+ </m:mrow>
+</m:math>
+を伝達関数と呼ぶ。伝達関数
+<m:math>
+ <m:mrow>
+  <m:mi>H</m:mi><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo>
+ </m:mrow>
+</m:math>
+はインパルス応答
+<m:math>
+ <m:mrow>
+  <m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>n</m:mi><m:mo stretchy="false">)</m:mo>
+ </m:mrow>
+</m:math>
+の
+<m:math>
+ <m:mi>z</m:mi>
+</m:math>
+変換
+であり、
+ディジタルフィルタの入出力関係を
+<m:math>
+ <m:mi>z</m:mi>
+</m:math>
+領域で表した式である。式(3)と式(11)
+を比較すると、畳み込み演算が
+<m:math>
+ <m:mi>z</m:mi>
+</m:math>
+領域では積で表現できることがわかる。</para><para id="element-633">　ここで、上式に
+<m:math>
+ <m:mrow>
+  <m:mi>z</m:mi><m:mo>=</m:mo><m:msup>
+   <m:mi>e</m:mi>
+   <m:mrow>
+    <m:mi>j</m:mi><m:mi>ω</m:mi>
+   </m:mrow>
+  </m:msup>
+  
+ </m:mrow>
+</m:math>
+を代入すると次式となる。</para><equation id="element-122"><!-- MathType@MTEF@5@5@+= -->
+<!-- feaafaart1ev1aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLn -->
+<!-- hiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYbItLDharqqtubsr -->
+<!-- 4rNCHbWexLMBbXgBd9gzLbvyNv2CaeHbcYMGYbIL+kzQaibaieYlNi -->
+<!-- =xH8yiVC0xbbL8F4rqqrFfpeea0xe9Lq=Jc9vqaqpepm0xbbG8FasP -->
+<!-- YRqj0=yi0dXdbba9pGe9xq=JbbG8A8frFve9Fve9Ff0dmeaabaqaci -->
+<!-- GacaGaaeqabaWaaeaaeaqbaOqaaiaadMfacaGGOaGaamyzamaaCaaa -->
+<!-- leqabaGaamOAaiabeM8a3baakiaacMcacqGH9aqpcaWGibGaaiikai -->
+<!-- aadwgadaahaaWcbeqaaiaadQgacqaHjpWDaaGccaGGPaGaamiwaiaa -->
+<!-- cIcacaWGLbWaaWbaaSqabeaacaWGQbGaeqyYdChaaOGaaiykaaaa@5382@ -->
+<m:math display="block">
+ <m:mi>Y</m:mi><m:mo stretchy="false">(</m:mo><m:msup>
+  <m:mi>e</m:mi>
+  <m:mrow>
+   <m:mi>j</m:mi><m:mi>ω</m:mi>
+  </m:mrow>
+ </m:msup>
+ <m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mi>H</m:mi><m:mo stretchy="false">(</m:mo><m:msup>
+  <m:mi>e</m:mi>
+  <m:mrow>
+   <m:mi>j</m:mi><m:mi>ω</m:mi>
+  </m:mrow>
+ </m:msup>
+ <m:mo stretchy="false">)</m:mo><m:mi>X</m:mi><m:mo stretchy="false">(</m:mo><m:msup>
+  <m:mi>e</m:mi>
+  <m:mrow>
+   <m:mi>j</m:mi><m:mi>ω</m:mi>
+  </m:mrow>
+ </m:msup>
+ <m:mo stretchy="false">)</m:mo>
+</m:math>
+</equation><para id="element-451"><m:math>
+ <m:mrow>
+  <m:mi>X</m:mi><m:mo stretchy="false">(</m:mo><m:msup>
+   <m:mi>e</m:mi>
+   <m:mrow>
+    <m:mi>j</m:mi><m:mi>ω</m:mi>
+   </m:mrow>
+  </m:msup>
+  <m:mo stretchy="false">)</m:mo>
+ </m:mrow>
+</m:math>
+および
+<m:math>
+ <m:mrow>
+  <m:mi>Y</m:mi><m:mo stretchy="false">(</m:mo><m:msup>
+   <m:mi>e</m:mi>
+   <m:mrow>
+    <m:mi>j</m:mi><m:mi>ω</m:mi>
+   </m:mrow>
+  </m:msup>
+  <m:mo stretchy="false">)</m:mo>
+ </m:mrow>
+</m:math>
+は、それぞれ入力信号
+<m:math>
+ <m:mrow>
+  <m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>n</m:mi><m:mo stretchy="false">)</m:mo>
+ </m:mrow>
+</m:math>
+および出力信号
+<m:math>
+ <m:mrow>
+  <m:mi>y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>n</m:mi><m:mo stretchy="false">)</m:mo>
+ </m:mrow>
+</m:math>
+の離散時間フーリエ変換(周波数スペクトル)である。式(11)は、畳み込み演算
+を周波数領域で表現した式に相当する。</para>
+</section>
+</content>
+  
+</document>

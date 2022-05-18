@@ -1,0 +1,83 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Analysis and Implementation of Digital Filters -  (INCT)</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>ad234e9d-1d6e-47a4-9525-6b00d7dc8453</md:uuid>
+</metadata>
+  <content>
+    <para id="delete_me">[課題１]　下図に示すインパルス応答
+<m:math>
+ <m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>n</m:mi><m:mo stretchy="false">)</m:mo>
+</m:math>
+を有する、インパルス応答長
+<m:math>
+ <m:mi>N</m:mi><m:mo>=</m:mo><m:mn>3</m:mn>
+</m:math>
+のFIRシステム
+<m:math>
+ <m:mo stretchy="false">(</m:mo><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mn>0</m:mn><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mn>1</m:mn><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mn>2</m:mn><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mn>0.33</m:mn><m:mo stretchy="false">)</m:mo>
+</m:math>
+を考える。</para><figure id="element-697"><media id="idp1439984" alt=""><image src="../../media/figure3.jpg" mime-type="image/jpeg"/></media>
+<caption>インパルス応答(N=3)</caption></figure><para id="element-864">このとき、以下の手順でこのシステムを解析し、振幅特性を計算せよ。
+また、上図のインパルス応答を持つFIRディジタルフィルタとして実現せよ。</para><para id="element-391">(1)システムのブロック図を示せ。</para><para id="element-929">(2)インパルス応答<!-- MathType@MTEF@5@5@+= -->
+<!-- feaafaart1ev1aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLn -->
+<!-- hiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYbItLDharqqtubsr -->
+<!-- 4rNCHbWexLMBbXgBd9gzLbvyNv2CaeHbcYMGYbIL+kzQaibaieYlNi -->
+<!-- =xH8yiVC0xbbL8F4rqqrFfpeea0xe9Lq=Jc9vqaqpepm0xbbG8FasP -->
+<!-- YRqj0=yi0dXdbba9pGe9xq=JbbG8A8frFve9Fve9Ff0dmeaabaqaci -->
+<!-- GacaGaaeqabaWaaeaaeaqbaOqaaiaadIgacaGGOaGaamOBaiaacMca -->
+<!-- aaa@438B@ -->
+<m:math>
+ <m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>n</m:mi><m:mo stretchy="false">)</m:mo>
+</m:math>
+からシステムの振幅特性を計算し、
+グラフとして表示せよ。ただし、横軸は正規化周波数、縦軸は[dB]とする。</para><para id="element-967">(3)信号データ(ファイル名: 
+<link resource="signal.txt">signal.txt</link> 
+)を入力信号
+<m:math>
+ <m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>n</m:mi><m:mo stretchy="false">)</m:mo>
+</m:math>
+として
+与える。
+<m:math>
+ <m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>n</m:mi><m:mo stretchy="false">)</m:mo>
+</m:math>
+は、100個のサンプル値からなる信号である(Figure 2)。
+計算機上のグラフツールを用いてこの信号を図示したとき、Figure 2のようになることを
+確認せよ(Figure 2は、サンプル値を強調するため、棒グラフ状に表示しているが、
+折線グラフで表示してもよい)。</para><para id="element-923">(4)x(n)を入力信号としてこのシステムに加え、FIRフィルタリングを行なっ
+た出力y(n)を求めるプログラムを作成せよ。</para><para id="element-401">(5)<!-- MathType@MTEF@5@5@+= -->
+<!-- feaafaart1ev1aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLn -->
+<!-- hiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYbItLDharqqtubsr -->
+<!-- 4rNCHbWexLMBbXgBd9gzLbvyNv2CaeHbcYMGYbIL+kzQaibaieYlNi -->
+<!-- =xH8yiVC0xbbL8F4rqqrFfpeea0xe9Lq=Jc9vqaqpepm0xbbG8FasP -->
+<!-- YRqj0=yi0dXdbba9pGe9xq=JbbG8A8frFve9Fve9Ff0dmeaabaqaci -->
+<!-- GacaGaaeqabaWaaeaaeaqbaOqaaiaadMhacaGGOaGaamOBaiaacMca -->
+<!-- aaa@439C@ -->
+<m:math>
+ <m:mi>y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>n</m:mi><m:mo stretchy="false">)</m:mo>
+</m:math>
+をFigure 2のような形式で図示し、入力信号との波形の変化を考察せよ。</para><figure id="element-932"><media id="idp961056" alt=""><image src="../../media/figure4.jpg" mime-type="image/jpeg"/></media>
+<caption>入力として使用するサンプル値信号</caption></figure><para id="element-6">　以上を含む内容を、インパルス応答<!-- MathType@MTEF@5@5@+= -->
+<!-- feaafaart1ev1aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLn -->
+<!-- hiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYbItLDharqqtubsr -->
+<!-- 4rNCHbWexLMBbXgBd9gzLbvyNv2CaeHbcYMGYbIL+kzQaibaieYlNi -->
+<!-- =xH8yiVC0xbbL8F4rqqrFfpeea0xe9Lq=Jc9vqaqpepm0xbbG8FasP -->
+<!-- YRqj0=yi0dXdbba9pGe9xq=JbbG8A8frFve9Fve9Ff0dmeaabaqaci -->
+<!-- GacaGaaeqabaWaaeaaeaqbaOqaaiaadIgacaGGOaGaaGimaiaacMca -->
+<!-- cqGH9aqpcaWGObGaaiikaiaaigdacaGGPaGaeyypa0JaamiAaiaacI -->
+<!-- cacaaIYaGaaiykaiabg2da9iaaicdacaGGUaGaaG4maiaaiodaaaa@4F4D@ -->
+<m:math>
+ <m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mn>0</m:mn><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mn>1</m:mn><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mn>2</m:mn><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mn>0.33</m:mn>
+</m:math>
+を有するFIRフィルタのシミュレーション結果として整理して報告せよ。</para><para id="element-320">　ただし、結果の報告の方法には注意し、自らが問題意識を持って
+実験を行ない報告する、という立場から内容を整理して報告すること。</para><para id="element-803">　・何を目的として、どのような内容の実験を行なおうとしているレポート</para><para id="element-777">　・どのようなブロック図のシステムで、どのような処理を実行しているの</para><para id="element-569">　・どのような信号を加え、どのような処理結果を得たのか。</para><para id="element-327">　・その結果、どのようなことが言えるのか。</para><para id="element-402">上記のような点に注意を払い、報告書を作成のこと。
+</para><para id="element-275">[課題２]以下の図に示すインパルス応答(ファイル名:
+<link resource="h10.txt">h10.txt</link> 
+)を有するFIRフィルタについて、同様に周波数特性の計算とFIRフィルタリングを実行し、結果を整理して報告せよ。</para><figure id="element-975"><media id="idp13380208" alt=""><image src="../../media/figure5.jpg" mime-type="image/jpeg"/></media>
+<caption>インパルス応答(N=10)</caption></figure><para id="element-733">[課題３] 課題2と同様に、以下の図に示すインパルス応答( ファイル名:
+<link resource="h21.txt">h21.txt</link>
+)を有するFIRフィルタについて、周波数特性の計算とFIRフィルタリングを実行し、結果を整理して報告せよ。</para><figure id="element-392"><media id="idp13355840" alt=""><image src="../../media/figure6.jpg" mime-type="image/jpeg"/></media>
+<caption>インパルス応答(N=21)</caption></figure><para id="element-677">[課題４] 音声信号(男声)に周波数4[kHz]の正弦波信号が妨害信号として加えられたFigure 5に示す信号がある。この信号から妨害信号を取り除き、音声信号のみを取り出したい。適切なFIRフィルタを設計し、これまでの課題で作成した たたみ込み計算プログラム(フィルタリングプログラム)により妨害信号を取り除いた信号を生成せよ。なお、この信号のサンプリング周波数はFs=11.025[kHz]である。</para><para id="element-792">※なお、この課題については追加資料を配布しますので、参考にして下さい。</para><figure id="element-253"><media id="idp7536864" alt=""><image src="../../media/figure7.jpg" mime-type="image/jpeg"/></media>
+<caption>正弦波信号が妨害信号として付加された音声信号波形(Fs=11.025[kHz])</caption></figure>   
+  </content>
+  
+</document>

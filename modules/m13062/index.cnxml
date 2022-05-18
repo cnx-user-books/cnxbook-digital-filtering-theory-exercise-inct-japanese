@@ -1,0 +1,10 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Assignments - Digital Filters (INCT)</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>820b5443-8d03-41e2-bddb-2054dac31c20</md:uuid>
+</metadata>
+  <content>
+    <para id="delete_me">(1)図4の入力信号は、正弦波に雑音を加えた信号をサンプリングした信号である。図4の横軸をよくみるとわかるように、この信号は正弦波1周期を20点でサンプリングしている。この正弦波のディジタル周波数(正規化周波数)を示せ。</para><para id="element-658">(2)各課題でのFIRフィルタの振幅特性から、FIRフィルタリング前後の信号波形の変化をできるだけ定量的に説明せよ(x(n)とy(n)について、信号の大きさ・波形の変化を比較する)。</para><para id="element-5">(3)FIRフィルタとIIRフィルタの特徴を調べ、比較せよ。</para><para id="element-809">(4)インパルス応答の値をさまざまに変えることで、特性の異なるフィルタを実現できる。希望の処理を行うために適切なインパルス応答の値を決定することが、ディジタルフィルタの設計に相当する。どのようなディジタルフィルタ設計法が
+あり、それぞれどのような特徴を持つかを調べてみよ。</para><para id="element-299">(5)感想を記せ。</para>   
+  </content>
+  
+</document>

@@ -1,0 +1,58 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Advanced Problems - Digital Filters (INCT)</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>96ac6bba-b961-4fa9-877b-a5bb2c7e8267</md:uuid>
+</metadata>
+  <content>
+    <para id="delete_me">(1)インパルス応答から位相特性を計算するプログラムを作成せよ。ただし、<!-- MathType@MTEF@5@5@+= -->
+<!-- feaafaart1ev1aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLn -->
+<!-- hiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYbItLDharqqtubsr -->
+<!-- 4rNCHbWexLMBbXgBd9gzLbvyNv2CaeHbcYMGYbIL+kzQaibaieYlNi -->
+<!-- =xH8yiVC0xbbL8F4rqqrFfpeea0xe9Lq=Jc9vqaqpepm0xbbG8FasP -->
+<!-- YRqj0=yi0dXdbba9pGe9xq=JbbG8A8frFve9Fve9Ff0dmeaabaqaci -->
+<!-- GacaGaaeqabaWaaeaaeaqbaOqaaiGacshacaGGHbGaaiOBamaaCaaa -->
+<!-- leqabaGaeyOeI0IaaGymaaaakmaabmaabaWaaSaaaeaacaaIWaaaba -->
+<!-- GaaGimaaaaaiaawIcacaGLPaaaaaa@480F@ -->
+<m:math>
+ <m:msup>
+  <m:mo>tan</m:mo>
+  <m:mrow>
+   <m:mo>−</m:mo><m:mn>1</m:mn>
+  </m:mrow>
+ </m:msup>
+ <m:mrow><m:mo>(</m:mo>
+  <m:mrow>
+   <m:mfrac>
+    <m:mn>0</m:mn>
+    <m:mn>0</m:mn>
+   </m:mfrac>
+   
+  </m:mrow>
+ <m:mo>)</m:mo></m:mrow>
+</m:math>
+が数学的に未定義であることに注意してプログラムを作成しないと、振幅の値がゼロに近づく周波数でプログラムが実行時エラーを起こす場合がある。</para><para id="element-730">(2)インパルス応答から群遅延特性を計算するプログラムを作成せよ。この
+結果から、<!-- MathType@MTEF@5@5@+= -->
+<!-- feaafaart1ev1aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLn -->
+<!-- hiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYbItLDharqqtubsr -->
+<!-- 4rNCHbWexLMBbXgBd9gzLbvyNv2CaeHbcYMGYbIL+kzQaibaieYlNi -->
+<!-- =xH8yiVC0xbbL8F4rqqrFfpeea0xe9Lq=Jc9vqaqpepm0xbbG8FasP -->
+<!-- YRqj0=yi0dXdbba9pGe9xq=JbbG8A8frFve9Fve9Ff0dmeaabaqaci -->
+<!-- GacaGaaeqabaWaaeaaeaqbaOqaaiaadIhacaGGOaGaamOBaiaacMca -->
+<!-- aaa@439B@ -->
+<m:math>
+ <m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>n</m:mi><m:mo stretchy="false">)</m:mo>
+</m:math>
+と<!-- MathType@MTEF@5@5@+= -->
+<!-- feaafaart1ev1aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLn -->
+<!-- hiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYbItLDharqqtubsr -->
+<!-- 4rNCHbWexLMBbXgBd9gzLbvyNv2CaeHbcYMGYbIL+kzQaibaieYlNi -->
+<!-- =xH8yiVC0xbbL8F4rqqrFfpeea0xe9Lq=Jc9vqaqpepm0xbbG8FasP -->
+<!-- YRqj0=yi0dXdbba9pGe9xq=JbbG8A8frFve9Fve9Ff0dmeaabaqaci -->
+<!-- GacaGaaeqabaWaaeaaeaqbaOqaaiaadMhacaGGOaGaamOBaiaacMca -->
+<!-- aaa@439C@ -->
+<m:math>
+ <m:mi>y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>n</m:mi><m:mo stretchy="false">)</m:mo>
+</m:math>
+の波形の時間的なずれを定量的に考察せよ</para><para id="element-172">(3)位相特性と群遅延特性は、実質的に同じことを異なる表現で示しているにすぎないことを、実験結果から考察せよ。</para><para id="element-725">(4)http://momiji.i.ishikawa-nct.ac.jpにより、各種のFIRおよびIIRディジタルフィルタが設計可能である。様々なフィルタの設計を行なってみよ。また、得られたフィルタ係数を利用して、ディジタルフィルタを実現せよ。</para>   
+  </content>
+  
+</document>
